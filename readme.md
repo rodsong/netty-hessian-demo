@@ -20,3 +20,6 @@ hessian 服务以servlet方式，二进制方式提供输出
    mvn jetty:run
    
 2. then run exc  java main class which named ApplicationHessianTest.java
+
+
+3. hessian 序列化 serialize 化HessianTest.java
