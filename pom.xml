@@ -3,7 +3,7 @@
 	<groupId>demo.netty</groupId>
 	<artifactId>netty-sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<properties>
 		<maven.project.name>netty-sample</maven.project.name>
@@ -90,6 +90,10 @@
 			<version>${maven.project.spring.version}</version>
 		</dependency>
 	</dependencies>
+
+	<modules>
+		<module>module/heartbeat</module>
+	</modules>
 
 	<build>
 		<finalName>${maven.project.name}</finalName>
