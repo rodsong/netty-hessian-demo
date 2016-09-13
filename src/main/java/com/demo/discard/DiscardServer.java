@@ -29,12 +29,12 @@ public class DiscardServer {
     }
 
     public void run() throws Exception {
-        // 多线程事件循环器,第一个经常被叫做‘boss’，用来接收进来的连接。
-        // 第二个经常被叫做‘worker’，用来处理已经被接收的连接，一旦‘boss’接收到连接，就会把连接信息注册到‘worker’上
+        // 多线程事件循环器,第一个经常被叫做‘boss’，用于服务端接收客户端的连接。
+        // 第二个经常被叫做‘worker’，用于进行socketchannel的网络读写
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            ServerBootstrap sbs = new ServerBootstrap(); // (2)
+            ServerBootstrap sbs = new ServerBootstrap(); // (2)服务端辅助启动类
             sbs.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class) // (3)socket channel
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)

@@ -11,17 +11,25 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 
 /**
- * ÃèÊö
+ * æè¿°
  *
  * @author songyanfei
  * @version 1.0
- * @date 2016Äê03ÔÂ15ÈÕ added
+ * @date 2016å¹´03æœˆ15æ—¥ added
  */
 public class ObjectClient {
 
-    public static void main(String[] args) throws InterruptedException {
+    private SocketChannel socketChannel;
+
+
+    public ObjectClient() throws InterruptedException {
+        start();
+    }
+
+    private void start() throws InterruptedException {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
@@ -35,11 +43,24 @@ public class ObjectClient {
                                     ,new ObjectEncoder(), new ObjectClientHandler());
                         }
                     });
-            ChannelFuture f = b.connect("127.0.0.1", 7777).sync();
-            f.channel().closeFuture().sync();
+            ChannelFuture future = b.connect("127.0.0.1", 7777).sync();
+            if (future.isSuccess()) {
+                socketChannel = (SocketChannel) future.channel();
+                System.out.println("connect server  æˆåŠŸ---------");
+            }
+
         } finally {
             workerGroup.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        ObjectClient client = new ObjectClient();
+
+        User user = new User();
+        user.setId(1L);
+        user.setUsername("netty");
+        client.socketChannel.writeAndFlush(user);
     }
 }
 

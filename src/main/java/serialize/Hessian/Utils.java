@@ -1,4 +1,4 @@
-package serialize;
+package serialize.hessian;
 
 
 import com.caucho.hessian.io.AbstractHessianOutput;

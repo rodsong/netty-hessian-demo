@@ -4,15 +4,13 @@ import com.demo.pojo.impl.Service;
 import com.demo.pojo.impl.ServiceImpl;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
- * ÃèÊö
- * ÔõÃ´Ñù
+ * æè¿°
+ * æ€ä¹ˆæ ·
  * @author songyanfei
  * @version 1.0
- * @date 2016Äê03ÔÂ15ÈÕ added
+ * @date 2016å¹´03æœˆ15æ—¥ added
  */
 
 public class ObjectServerHandler extends ChannelInboundHandlerAdapter {
@@ -35,7 +33,7 @@ public class ObjectServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        //´òÓ¡Òì³£ĞÅÏ¢²¢¹Ø±ÕÁ¬½Ó
+        //æ‰“å°å¼‚å¸¸ä¿¡æ¯å¹¶å…³é—­è¿æ¥
         cause.printStackTrace();
         ctx.close();
     }

@@ -1,4 +1,4 @@
-package serialize;
+package serialize.hessian;
 
 /**
  * ÃèÊö

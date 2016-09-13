@@ -14,19 +14,20 @@ public class ObjectClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        User user = new User();
+     /*   User user = new User();
         user.setId(1L);
         user.setUsername("netty");
         ctx.write(user);
-        ctx.flush();
+        ctx.flush();*/
+        System.out.println("channel active");
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         User user = (User) msg;
-        System.out.println(user);
+        System.out.println(user.toString());
         //ctx.write(user);
-        ctx.close();
+       // ctx.close();
     }
 
     @Override
